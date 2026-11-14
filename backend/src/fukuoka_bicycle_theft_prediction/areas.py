@@ -18,7 +18,7 @@ import geopandas as gpd
 import pandas as pd
 import polars as pl
 
-from bicycle_theft.paths import PROCESSED_DIR, RAW_DIR
+from fukuoka_bicycle_theft_prediction.paths import PROCESSED_DIR, RAW_DIR
 
 BOUNDARY_DIR = RAW_DIR / "census" / "boundary"
 GEOJSON_PATH = PROCESSED_DIR / "fukuoka_areas.geojson"

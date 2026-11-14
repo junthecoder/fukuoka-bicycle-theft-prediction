@@ -3,7 +3,7 @@ from datetime import date
 
 import polars as pl
 
-from bicycle_theft.pipeline import DATE_COLUMN, HOUR_COLUMN, parse_types
+from fukuoka_bicycle_theft_prediction.pipeline import DATE_COLUMN, HOUR_COLUMN, parse_types
 
 
 class ParsingTests(unittest.TestCase):

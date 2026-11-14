@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 import polars as pl
 
-from bicycle_theft import pipeline
+from fukuoka_bicycle_theft_prediction import pipeline
 
 
 class PipelineTests(unittest.TestCase):

@@ -6,8 +6,8 @@ import tempfile
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-from bicycle_theft.census_bbox import census_bbox
-from bicycle_theft.paths import RAW_DIR
+from fukuoka_bicycle_theft_prediction.census_bbox import census_bbox
+from fukuoka_bicycle_theft_prediction.paths import RAW_DIR
 
 OUTPUT = RAW_DIR / "fukuoka.pmtiles"
 BUILDS_URL = "https://build-metadata.protomaps.dev/builds.json"
@@ -19,7 +19,7 @@ MARGIN_KM = 12
 
 def latest_build_key() -> str:
     # The build listing answers 403 to urllib's default User-Agent.
-    request = Request(BUILDS_URL, headers={"User-Agent": "bicycle-theft-prediction (uv run download-pmtiles)"})
+    request = Request(BUILDS_URL, headers={"User-Agent": "fukuoka-bicycle-theft-prediction (uv run download-pmtiles)"})
     with urlopen(request, timeout=30) as response:
         builds = json.load(response)
     # Keys are <YYYYMMDD>.pmtiles, so the lexicographic max is the newest build.

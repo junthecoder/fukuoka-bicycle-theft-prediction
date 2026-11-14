@@ -5,8 +5,8 @@ from pathlib import Path
 import geopandas as gpd
 from shapely.geometry import box
 
-from bicycle_theft.areas import build_areas, build_city_outline, normalize_area_name, read_boundaries
-from bicycle_theft.census_bbox import census_bbox, pad
+from fukuoka_bicycle_theft_prediction.areas import build_areas, build_city_outline, normalize_area_name, read_boundaries
+from fukuoka_bicycle_theft_prediction.census_bbox import census_bbox, pad
 
 
 class GeographyTests(unittest.TestCase):

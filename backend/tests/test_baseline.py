@@ -1,8 +1,8 @@
 import unittest
 from datetime import date
 
-from bicycle_theft.api.data import hour_filter, rate_per_1000
 from fixtures import dataset
+from fukuoka_bicycle_theft_prediction.api.data import hour_filter, rate_per_1000
 
 
 class BaselineTests(unittest.TestCase):

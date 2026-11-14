@@ -7,7 +7,7 @@ from pathlib import Path
 
 import polars as pl
 
-from bicycle_theft.paths import PROCESSED_DIR, RAW_DIR
+from fukuoka_bicycle_theft_prediction.paths import PROCESSED_DIR, RAW_DIR
 
 TABLE_NAME = "fukuoka_bicycle_thefts"
 DATE_COLUMN = "発生年月日（始期）"

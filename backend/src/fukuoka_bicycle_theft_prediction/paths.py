@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-# backend/src/bicycle_theft/paths.py -> repository root
+# backend/src/fukuoka_bicycle_theft_prediction/paths.py -> repository root
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DATA_DIR = REPO_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
