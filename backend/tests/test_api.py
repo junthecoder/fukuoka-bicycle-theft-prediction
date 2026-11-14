@@ -5,13 +5,13 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from bicycle_theft.api.app import app
 from fixtures import dataset
+from fukuoka_bicycle_theft_prediction.api.app import app
 
 
 class ApiTests(unittest.TestCase):
     def setUp(self):
-        self.load = patch("bicycle_theft.api.app.Dataset.load", return_value=dataset())
+        self.load = patch("fukuoka_bicycle_theft_prediction.api.app.Dataset.load", return_value=dataset())
         self.load.start()
         self.client = TestClient(app, raise_server_exceptions=False)
         self.client.__enter__()
@@ -58,7 +58,7 @@ class ApiTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "fukuoka.pmtiles"
             path.write_bytes(b"0123456789")
-            with patch("bicycle_theft.api.app.PMTILES_PATH", path):
+            with patch("fukuoka_bicycle_theft_prediction.api.app.PMTILES_PATH", path):
                 r = self.client.get("/tiles/fukuoka.pmtiles", headers={"Range": "bytes=2-5"})
                 self.assertEqual(r.status_code, 206)
                 self.assertEqual(r.content, b"2345")

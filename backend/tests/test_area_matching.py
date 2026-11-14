@@ -3,8 +3,8 @@ from unittest.mock import patch
 
 import polars as pl
 
-from bicycle_theft.api.data import area_lookup, load_thefts, match_area
 from fixtures import dataset
+from fukuoka_bicycle_theft_prediction.api.data import area_lookup, load_thefts, match_area
 
 
 class AreaMatchingTests(unittest.TestCase):
@@ -28,7 +28,7 @@ class AreaMatchingTests(unittest.TestCase):
                 "発生場所の属性": ["住宅"],
             }
         )
-        with patch("bicycle_theft.api.data.pl.read_parquet", return_value=raw):
+        with patch("fukuoka_bicycle_theft_prediction.api.data.pl.read_parquet", return_value=raw):
             result = load_thefts(dataset().areas)
         self.assertEqual(result["key_code"][0], "40135026001")
         self.assertEqual(result["place"][0], "住宅")

@@ -1,5 +1,5 @@
 [project]
-name = "bicycle-theft-prediction"
+name = "fukuoka-bicycle-theft-prediction"
 version = "0.1.1"
 description = "Predict Bicycle Thefts in Fukuoka"
 license = "Apache-2.0"
@@ -24,19 +24,19 @@ dev = [
 ]
 
 [project.scripts]
-pipeline = "bicycle_theft.pipeline:main"
-census-bbox = "bicycle_theft.census_bbox:main"
-download-pmtiles = "bicycle_theft.download_pmtiles:main"
-build-areas = "bicycle_theft.areas:main"
-api = "bicycle_theft.api.app:main"
-export-openapi = "bicycle_theft.api.export_openapi:main"
+pipeline = "fukuoka_bicycle_theft_prediction.pipeline:main"
+census-bbox = "fukuoka_bicycle_theft_prediction.census_bbox:main"
+download-pmtiles = "fukuoka_bicycle_theft_prediction.download_pmtiles:main"
+build-areas = "fukuoka_bicycle_theft_prediction.areas:main"
+api = "fukuoka_bicycle_theft_prediction.api.app:main"
+export-openapi = "fukuoka_bicycle_theft_prediction.api.export_openapi:main"
 
 [build-system]
 requires = ["uv_build>=0.13.5,<0.14"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "bicycle_theft"
+module-name = "fukuoka_bicycle_theft_prediction"
 
 [tool.ruff]
 line-length = 120
@@ -46,4 +46,4 @@ target-version = "py315"
 select = ["E4", "E7", "E9", "F", "I", "B"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["bicycle_theft", "fixtures"]
+known-first-party = ["fukuoka_bicycle_theft_prediction", "fixtures"]

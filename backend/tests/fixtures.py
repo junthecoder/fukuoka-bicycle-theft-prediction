@@ -4,7 +4,7 @@ from datetime import date
 
 import polars as pl
 
-from bicycle_theft.api.data import Dataset
+from fukuoka_bicycle_theft_prediction.api.data import Dataset
 
 
 def dataset():

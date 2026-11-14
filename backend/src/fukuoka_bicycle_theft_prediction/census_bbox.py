@@ -6,7 +6,7 @@ from pathlib import Path
 import geopandas as gpd
 import pandas as pd
 
-from bicycle_theft.paths import RAW_DIR
+from fukuoka_bicycle_theft_prediction.paths import RAW_DIR
 
 BOUNDARY_DIR = RAW_DIR / "census" / "boundary"
 CRS = "EPSG:4326"

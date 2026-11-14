@@ -6,10 +6,10 @@ from datetime import date, timedelta
 
 import polars as pl
 
-from bicycle_theft.api import schemas
-from bicycle_theft.areas import CHOME_PATTERN, normalize_area_name
-from bicycle_theft.areas import PARQUET_PATH as AREAS_PATH
-from bicycle_theft.paths import PROCESSED_DIR
+from fukuoka_bicycle_theft_prediction.api import schemas
+from fukuoka_bicycle_theft_prediction.areas import CHOME_PATTERN, normalize_area_name
+from fukuoka_bicycle_theft_prediction.areas import PARQUET_PATH as AREAS_PATH
+from fukuoka_bicycle_theft_prediction.paths import PROCESSED_DIR
 
 THEFTS_PATH = PROCESSED_DIR / "fukuoka_bicycle_thefts.parquet"
 # 市区町村コード of the seven Fukuoka city wards all start with 4013.

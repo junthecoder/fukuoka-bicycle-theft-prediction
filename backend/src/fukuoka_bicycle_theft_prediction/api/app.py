@@ -11,10 +11,10 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.routing import APIRoute
 
-from bicycle_theft.api import schemas
-from bicycle_theft.api.data import Dataset, InvalidWindow
-from bicycle_theft.areas import CITY_GEOJSON_PATH, GEOJSON_PATH
-from bicycle_theft.download_pmtiles import OUTPUT as PMTILES_PATH
+from fukuoka_bicycle_theft_prediction.api import schemas
+from fukuoka_bicycle_theft_prediction.api.data import Dataset, InvalidWindow
+from fukuoka_bicycle_theft_prediction.areas import CITY_GEOJSON_PATH, GEOJSON_PATH
+from fukuoka_bicycle_theft_prediction.download_pmtiles import OUTPUT as PMTILES_PATH
 
 
 @asynccontextmanager
@@ -126,7 +126,7 @@ def get_timeline(
 
 
 def main() -> None:
-    uvicorn.run("bicycle_theft.api.app:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("fukuoka_bicycle_theft_prediction.api.app:app", host="127.0.0.1", port=8000, reload=True)
 
 
 if __name__ == "__main__":

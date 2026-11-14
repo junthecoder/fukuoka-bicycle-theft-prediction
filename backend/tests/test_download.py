@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from bicycle_theft import download_pmtiles as download
+from fukuoka_bicycle_theft_prediction import download_pmtiles as download
 
 
 class DownloadTests(unittest.TestCase):
