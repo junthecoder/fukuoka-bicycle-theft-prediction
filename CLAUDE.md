@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Predicting bicycle thefts in Fukuoka city. Two independent sub-projects share one untracked `data/` directory at the repo root:
 
-- `backend/`: Python 3.15 package `bicycle_theft` (managed with uv, `src/` layout, `uv_build` backend). It holds the data pipeline and the FastAPI service; the model comes later.
+- `backend/`: Python 3.15 package `fukuoka_bicycle_theft_prediction` (managed with uv, `src/` layout, `uv_build` backend). It holds the data pipeline and the FastAPI service; the model comes later.
 - `frontend/`: React 19 + TypeScript + Vite app (pnpm) that renders a MapLibre map via `react-map-gl/maplibre` with a 町丁目 choropleth, a date/time slider and a detail side panel. The UI text is Japanese.
 
 ## Commands
@@ -36,7 +36,7 @@ Regression tests run with `uv run python -m unittest discover -s tests -v` in ba
 
 ## Architecture
 
-**Data paths.** `bicycle_theft/paths.py` resolves `REPO_ROOT` from its own file location (`parents[3]`), and every script imports `RAW_DIR` / `PROCESSED_DIR` from it. Use these constants instead of hard-coding paths. If you move `paths.py`, update the `parents[...]` index. Expected layout under `data/raw/`: `bicycle-thefts/*.csv` (yearly files), `census/boundary/` (e-Stat shapefiles, one per ward, all seven wards), `census/population/`, and `fukuoka.pmtiles`. The e-Stat download URLs for the census data are listed in `README.md`.
+**Data paths.** `fukuoka_bicycle_theft_prediction/paths.py` resolves `REPO_ROOT` from its own file location (`parents[3]`), and every script imports `RAW_DIR` / `PROCESSED_DIR` from it. Use these constants instead of hard-coding paths. If you move `paths.py`, update the `parents[...]` index. Expected layout under `data/raw/`: `bicycle-thefts/*.csv` (yearly files), `census/boundary/` (e-Stat shapefiles, one per ward, all seven wards), `census/population/`, and `fukuoka.pmtiles`. The e-Stat download URLs for the census data are listed in `README.md`.
 
 **Pipeline (`pipeline.py`).** Reads `data/raw/bicycle-thefts/*.csv` into Polars, validates the required date/hour columns, unions yearly schemas, and writes one complete Parquet file to a temporary sibling before atomically replacing `data/processed/fukuoka_bicycle_thefts.parquet`. Missing CSVs and invalid inputs fail without replacing the previous output. The old per-load-file dlt sink was removed because it searched the wrong directory and could overwrite earlier shards. The raw CSVs are messy in ways the code handles on purpose:
 - Encoding varies by year: cp932 (not strict shift_jis) or UTF-8 with a BOM. `decode()` tries both.
@@ -56,7 +56,7 @@ Regression tests run with `uv run python -m unittest discover -s tests -v` in ba
 
 **Basemap.** `download-pmtiles` reuses `census_bbox()` to clip the newest Protomaps daily planet build (`build-metadata.protomaps.dev/builds.json`) to the census boundary extent plus `MARGIN_KM`. Because of this, the boundary shapefiles must exist before you download tiles. `Map.tsx` limits panning to `CITY_EXTENT` (the city without the far-off 小呂島) padded by `VIEW_MARGIN_KM`, which must stay below `MARGIN_KM`. `useOverlayInsets` measures the overlay panels: the side panel becomes map padding so the bounds are balanced in the visible part of the map, while the controls panel's height is added to the north bound at the current zoom (`constrainToCity`, re-run on every zoom) so the map can be dragged down from under it without raising the minimum zoom. The build listing rejects urllib's default User-Agent, so the script sends its own. Fonts and sprites still come from protomaps.github.io.
 
-**Notebooks.** `backend/notebooks/` uses the backend venv (`.vscode/settings.json` points the interpreter at `backend/.venv`) and imports from `bicycle_theft.paths` to load the processed Parquet with polars.
+**Notebooks.** `backend/notebooks/` uses the backend venv (`.vscode/settings.json` points the interpreter at `backend/.venv`) and imports from `fukuoka_bicycle_theft_prediction.paths` to load the processed Parquet with polars.
 
 ## Conventions
 

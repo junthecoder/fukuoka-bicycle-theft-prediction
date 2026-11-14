@@ -10,7 +10,7 @@
       "severity": "high",
       "category": "integration",
       "files": [
-        "backend/src/bicycle_theft/pipeline.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/pipeline.py"
       ],
       "component": "CSV ingestion",
       "current_behavior": "Running pipeline with CSVs under data/raw/bicycle-thefts fails with cannot concat empty list.",
@@ -32,7 +32,7 @@
       "severity": "high",
       "category": "data integrity",
       "files": [
-        "backend/src/bicycle_theft/pipeline.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/pipeline.py"
       ],
       "component": "Date parser",
       "current_behavior": "20241301 silently becomes year 57318 instead of failing validation.",
@@ -54,7 +54,7 @@
       "severity": "medium",
       "category": "edge case",
       "files": [
-        "backend/src/bicycle_theft/pipeline.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/pipeline.py"
       ],
       "component": "Hour parser",
       "current_behavior": "-1, 24 and 127 are accepted as hours.",
@@ -76,7 +76,7 @@
       "severity": "high",
       "category": "functional",
       "files": [
-        "backend/src/bicycle_theft/api/data.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/api/data.py"
       ],
       "component": "Census join",
       "current_behavior": "壱岐団地 thefts map to 40135026002 (population 1,163), contrary to the documented preference for 40135026001 (3,537).",
@@ -98,7 +98,7 @@
       "severity": "medium",
       "category": "functional",
       "files": [
-        "backend/src/bicycle_theft/api/data.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/api/data.py"
       ],
       "component": "Area normalization",
       "current_behavior": "北原１丁目 fails to match 大字北原 when both a parent-town and prefix fallback are needed.",
@@ -120,7 +120,7 @@
       "severity": "medium",
       "category": "integration",
       "files": [
-        "backend/src/bicycle_theft/api/data.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/api/data.py"
       ],
       "component": "Parquet schema compatibility",
       "current_behavior": "Reading or renaming optional columns fails when a whole year lacks them.",
@@ -142,8 +142,8 @@
       "severity": "medium",
       "category": "edge case",
       "files": [
-        "backend/src/bicycle_theft/api/app.py",
-        "backend/src/bicycle_theft/api/data.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/api/app.py",
+        "backend/src/fukuoka_bicycle_theft_prediction/api/data.py"
       ],
       "component": "Query validation",
       "current_behavior": "Very large days, end=0001-01-01, or a representable current window with an unrepresentable prior window produce 500.",
@@ -165,8 +165,8 @@
       "severity": "medium",
       "category": "API contract",
       "files": [
-        "backend/src/bicycle_theft/api/app.py",
-        "backend/src/bicycle_theft/api/data.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/api/app.py",
+        "backend/src/fukuoka_bicycle_theft_prediction/api/data.py"
       ],
       "component": "Monthly timeline",
       "current_behavior": "Unknown areas return 200 with an empty list while summary returns 404; filters remove zero-count months from the timeline.",
@@ -301,7 +301,7 @@
       "severity": "medium",
       "category": "integration",
       "files": [
-        "backend/src/bicycle_theft/download_pmtiles.py"
+        "backend/src/fukuoka_bicycle_theft_prediction/download_pmtiles.py"
       ],
       "component": "Basemap download",
       "current_behavior": "A failed extraction leaves fukuoka.pmtiles.part; retries reuse that path. The metadata request has no timeout.",
