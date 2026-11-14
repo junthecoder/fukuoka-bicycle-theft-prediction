@@ -6,10 +6,10 @@ Baseline: `0022d1a` (`main`); working tree was clean. Review covers all tracked 
 
 | Path | Responsibility / entry points |
 | --- | --- |
-| `backend/src/bicycle_theft/pipeline.py` | Yearly police CSV ingestion (`pipeline`) |
-| `backend/src/bicycle_theft/areas.py` | Census shapefile normalization / area and outline generation (`build-areas`) |
-| `backend/src/bicycle_theft/census_bbox.py`, `download_pmtiles.py` | Boundary extent / external Protomaps download |
-| `backend/src/bicycle_theft/api/` | In-memory joins and statistics, FastAPI (`api`), OpenAPI exporter |
+| `backend/src/fukuoka_bicycle_theft_prediction/pipeline.py` | Yearly police CSV ingestion (`pipeline`) |
+| `backend/src/fukuoka_bicycle_theft_prediction/areas.py` | Census shapefile normalization / area and outline generation (`build-areas`) |
+| `backend/src/fukuoka_bicycle_theft_prediction/census_bbox.py`, `download_pmtiles.py` | Boundary extent / external Protomaps download |
+| `backend/src/fukuoka_bicycle_theft_prediction/api/` | In-memory joins and statistics, FastAPI (`api`), OpenAPI exporter |
 | `backend/notebooks/eda.ipynb` | Exploratory analysis, not a production entry point |
 | `backend/openapi.json`, `frontend/src/client/` | Generated HTTP contract and fetch SDK |
 | `frontend/src/App.tsx`, `Map.tsx` | State / requests and MapLibre rendering |

@@ -31,7 +31,7 @@ The baseline assessment, validation evidence and limitations are in [README.md](
 
 **HIGH / P1** · integration · CSV ingestion · complexity: medium · status: fixed
 
-Files: `backend/src/bicycle_theft/pipeline.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/pipeline.py`.
 
 **Observed:** Running pipeline with CSVs under data/raw/bicycle-thefts fails with cannot concat empty list.
 
@@ -51,7 +51,7 @@ Files: `backend/src/bicycle_theft/pipeline.py`.
 
 **HIGH / P1** · data integrity · Date parser · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/pipeline.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/pipeline.py`.
 
 **Observed:** 20241301 silently becomes year 57318 instead of failing validation.
 
@@ -71,7 +71,7 @@ Files: `backend/src/bicycle_theft/pipeline.py`.
 
 **MEDIUM / P2** · edge case · Hour parser · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/pipeline.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/pipeline.py`.
 
 **Observed:** -1, 24 and 127 are accepted as hours.
 
@@ -91,7 +91,7 @@ Files: `backend/src/bicycle_theft/pipeline.py`.
 
 **HIGH / P1** · functional · Census join · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/api/data.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/api/data.py`.
 
 **Observed:** 壱岐団地 thefts map to 40135026002 (population 1,163), contrary to the documented preference for 40135026001 (3,537).
 
@@ -111,7 +111,7 @@ Files: `backend/src/bicycle_theft/api/data.py`.
 
 **MEDIUM / P2** · functional · Area normalization · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/api/data.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/api/data.py`.
 
 **Observed:** 北原１丁目 fails to match 大字北原 when both a parent-town and prefix fallback are needed.
 
@@ -131,7 +131,7 @@ Files: `backend/src/bicycle_theft/api/data.py`.
 
 **MEDIUM / P2** · integration · Parquet schema compatibility · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/api/data.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/api/data.py`.
 
 **Observed:** Reading or renaming optional columns fails when a whole year lacks them.
 
@@ -151,7 +151,7 @@ Files: `backend/src/bicycle_theft/api/data.py`.
 
 **MEDIUM / P2** · edge case · Query validation · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/api/app.py`, `backend/src/bicycle_theft/api/data.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/api/app.py`, `backend/src/fukuoka_bicycle_theft_prediction/api/data.py`.
 
 **Observed:** Very large days, end=0001-01-01, or a representable current window with an unrepresentable prior window produce 500.
 
@@ -171,7 +171,7 @@ Files: `backend/src/bicycle_theft/api/app.py`, `backend/src/bicycle_theft/api/da
 
 **MEDIUM / P2** · API contract · Monthly timeline · complexity: medium · status: fixed
 
-Files: `backend/src/bicycle_theft/api/app.py`, `backend/src/bicycle_theft/api/data.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/api/app.py`, `backend/src/fukuoka_bicycle_theft_prediction/api/data.py`.
 
 **Observed:** Unknown areas return 200 with an empty list while summary returns 404; filters remove zero-count months from the timeline.
 
@@ -291,7 +291,7 @@ Files: `frontend/src/Map.tsx`, `frontend/src/lib/mapDisplay.ts`.
 
 **MEDIUM / P2** · integration · Basemap download · complexity: low · status: fixed
 
-Files: `backend/src/bicycle_theft/download_pmtiles.py`.
+Files: `backend/src/fukuoka_bicycle_theft_prediction/download_pmtiles.py`.
 
 **Observed:** A failed extraction leaves fukuoka.pmtiles.part; retries reuse that path. The metadata request has no timeout.
 

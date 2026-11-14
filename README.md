@@ -37,7 +37,7 @@ cd frontend && pnpm install && pnpm dev   # Vite on http://localhost:5173, proxi
 
 ### Keeping the API types in sync
 
-Response models are Pydantic classes in `backend/src/bicycle_theft/api/schemas.py`. After changing
+Response models are Pydantic classes in `backend/src/fukuoka_bicycle_theft_prediction/api/schemas.py`. After changing
 them or any endpoint:
 
 ```sh
