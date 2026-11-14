@@ -75,7 +75,8 @@ def raw_csv_rows(raw_dir: Path | None = None):
 
 
 def main() -> None:
-    frame = pl.from_arrow(next(raw_csv_rows()))
+    # pl.from_arrow is typed DataFrame | Series; the DataFrame constructor keeps the type exact.
+    frame = pl.DataFrame(next(raw_csv_rows()))
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     output = PROCESSED_DIR / f"{TABLE_NAME}.parquet"
     # One complete file, swapped only on success. A per-load-file sink can overwrite
